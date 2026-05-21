@@ -3,27 +3,22 @@
   "theme": "mint",
   "name": "01Resolved",
   "colors": {
-    "primary": "#2E6DA4",
-    "light": "#5B9BD5",
-    "dark": "#1B3A5C"
+    "primary": "#0A0A0A",
+    "light": "#4A4A4A",
+    "dark": "#0A0A0A"
+  },
+  "font": {
+    "headings": {
+      "family": "Open Sauce One"
+    },
+    "body": {
+      "family": "Open Sauce One"
+    }
   },
   "favicon": "/favicon.svg",
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Platform",
-        "href": "https://www.01resolved.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Get Access",
-      "href": "https://t.me/Official01Resolved"
-    }
   },
   "navigation": {
     "tabs": [
@@ -101,15 +96,6 @@
         }
       ]
     }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity"
-    ]
   },
   "footer": {
     "socials": {
