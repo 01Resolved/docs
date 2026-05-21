@@ -1,0 +1,78 @@
+---
+title: "01Resolved API"
+description: "Structured intelligence for ownership coins and decision markets on Solana."
+---
+
+<Note>
+  The API is currently in **closed beta**. To request access, message the team on [Telegram](https://t.me/Official01Resolved).
+</Note>
+
+## What you can build
+
+<Columns cols={2}>
+  <Card title="Treasury Dashboards" icon="vault">
+    Real-time treasury monitoring for any tracked DAO — balances, NAV, runway, and account registry.
+  </Card>
+  <Card title="Proposal Alerts" icon="bell">
+    Monitor live and initiated proposals across the entire ecosystem. Track pass edge in real time.
+  </Card>
+  <Card title="Decision Market Analytics" icon="chart-line">
+    TWAP tracking, conviction over time, trader behavior, and outcome strength for every governance vote.
+  </Card>
+  <Card title="ICO Research Tools" icon="magnifying-glass">
+    Historical fundraising data, ICO returns, contributor stats, and failed launch history.
+  </Card>
+  <Card title="Portfolio Trackers" icon="coins">
+    Token price, NAV per token, mNAV, premium/discount, and runway for all 12+ ownership coins in one call.
+  </Card>
+  <Card title="Governance Research" icon="landmark">
+    Full proposal text, trade-level data, and wallet-level participation across all MetaDAO ecosystem projects.
+  </Card>
+</Columns>
+
+## Quick start
+
+<Steps>
+  <Step title="Request access">
+    Message the 01Resolved team on [Telegram](https://t.me/Official01Resolved) with a brief description of what you are building. You will receive an API key once approved.
+  </Step>
+  <Step title="Authenticate">
+    Include your API key in every request using the `x-api-key` header.
+    ```bash
+    curl -H "x-api-key: YOUR_API_KEY" \
+      "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+    ```
+  </Step>
+  <Step title="Make your first call">
+    Get a live snapshot of every tracked project — token price, treasury, NAV, mNAV, and runway — in a single call.
+    ```bash
+    curl -H "x-api-key: YOUR_API_KEY" \
+      "https://01resolved.var-meta.com/api/v1/global-dashboard/projects-launch"
+    ```
+  </Step>
+</Steps>
+
+## Base URL
+
+```
+https://01resolved.var-meta.com
+```
+
+All endpoints are prefixed with `/api/v1/`.
+
+## Explore the API
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/essentials/authentication">
+    How to authenticate every request.
+  </Card>
+  <Card title="Core Concepts" icon="book" href="/essentials/core-concepts">
+    Ownership coins, futarchy, NAV, TWAP, pass edge — explained.
+  </Card>
+  <Card title="API Reference" icon="terminal" href="/api-reference/introduction">
+    Every endpoint with real example responses.
+  </Card>
+  <Card title="Use Case Guides" icon="map" href="/guides/use-cases">
+    Copy-paste recipes for common integrations.
+  </Card>
+</CardGroup>

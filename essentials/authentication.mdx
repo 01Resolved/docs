@@ -1,0 +1,56 @@
+---
+title: "Authentication"
+description: "How to authenticate requests to the 01Resolved API."
+icon: "key"
+---
+
+## API Keys
+
+All requests to the 01Resolved API require an API key passed in the request header.
+
+| Header | Value |
+|--------|-------|
+| `x-api-key` | Your API key |
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" \
+  "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+```
+
+Requests without a valid API key return `401 Unauthorized`.
+
+## Getting an API Key
+
+The API is currently in **closed beta**.
+
+<Card title="Request API Access" icon="telegram" href="https://t.me/Official01Resolved">
+  Message the 01Resolved team on Telegram with a brief description of what you are building.
+</Card>
+
+Once approved you will receive an API key to include in all requests.
+
+## Checking Your Key
+
+Use the `/api/v1/api-key/current` endpoint to verify your key and check its configuration.
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" \
+  "https://01resolved.var-meta.com/api/v1/api-key/current"
+```
+
+```json
+{
+  "data": {
+    "name": "Partner API Key",
+    "type": "partner",
+    "isActive": true,
+    "rateLimitPerMinute": 600,
+    "expiresAt": null,
+    "lastUsedAt": "2026-05-21T05:57:20.589Z"
+  }
+}
+```
+
+## Paid Tiers
+
+Paid tiers with higher rate limits and additional features are coming soon.

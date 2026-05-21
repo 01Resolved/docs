@@ -1,0 +1,165 @@
+---
+title: "Global Dashboard"
+description: "Ecosystem-wide totals, all proposals across all DAOs, ICO data, and project snapshots."
+icon: "globe"
+---
+
+---
+
+## GET /api/v1/global-dashboard/projects-launch
+
+Returns all tracked projects with live token metrics, treasury data, NAV, and mNAV. **The most useful single endpoint for a weekly ecosystem snapshot.**
+
+**Parameters:** `limit`, `page`
+
+```bash
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/global-dashboard/projects-launch"
+```
+
+<Accordion title="Example Response (one project)">
+```json
+{
+  "meta": { "totalItems": 12 },
+  "data": [
+    {
+      "organizationSlug": "metadao",
+      "organizationName": "MetaDAO",
+      "tokenSymbol": "META",
+      "tokenUsdPrice": "3.3260",
+      "tokenPriceChangePercentage24h": "-1.98",
+      "marketCap": "75432981.00",
+      "fdv": "75432981.00",
+      "treasuryValue": "12476348.74",
+      "spendingLimit": "240000",
+      "proposalCount": 37,
+      "netAssetValue": "0.558",
+      "monthsOfRunway": "44.67",
+      "mNAV": "6.04",
+      "premDisc": "497.31"
+    }
+  ]
+}
+```
+</Accordion>
+
+| Field | Description |
+|-------|-------------|
+| `netAssetValue` | NAV per token in USD |
+| `mNAV` | Market cap / treasury value. High = potentially overvalued vs treasury. |
+| `premDisc` | Premium or discount to NAV %. Formula: `((token price - NAV) / NAV) × 100`. Positive = premium. |
+| `monthsOfRunway` | Months of treasury runway at current spend rate |
+
+---
+
+## GET /api/v1/global-dashboard/decision-markets
+
+Returns all proposals across all DAOs. **The best endpoint for monitoring ecosystem-wide governance.**
+
+**Parameters:** `limit`, `page`
+
+```bash
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/global-dashboard/decision-markets?limit=50"
+```
+
+**Response per proposal:** `project`, `projectSlug`, `proposal`, `publicKey`, `status`, `result`, `startDate`, `endDate`, `size`, `volume`, `trades`, `uniqueTraders`
+
+Filter on `status` for `live` proposals. Check `volume` to prioritize by significance.
+
+---
+
+## GET /api/v1/global-dashboard/overview/decision-markets
+
+Returns ecosystem-wide totals.
+
+```bash
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/global-dashboard/overview/decision-markets"
+```
+
+**Response:** `{totalProposals: 133, totalVolume: "14472484.44", totalTrades: 164786}`
+
+---
+
+## GET /api/v1/global-dashboard/projects
+
+Returns all tracked DAOs with proposal activity summary.
+
+**Parameters:** `limit`, `page`
+
+**Response per DAO:** `organizationSlug`, `organizationName`, `proposalCount`, `lastProposalStatus`, `lastProposalEndDate`
+
+---
+
+## GET /api/v1/global-dashboard/projects/decision-markets
+
+Returns currently live or initiated proposals with staking progress and TWAP status.
+
+| Field | Description |
+|-------|-------------|
+| `stakingProgressPercentage` | % of required stake accumulated |
+| `proposalTwapStatus` | Current market signal: `approve`, `reject`, or `pending` |
+
+---
+
+## GET /api/v1/global-dashboard/completed-launches/info
+
+Returns completed ICOs with full fundraising data and current ICO return.
+
+**Parameters:** `limit`, `page`
+
+<Accordion title="Example Response (one ICO)">
+```json
+{
+  "data": [
+    {
+      "title": "MetaDAO",
+      "tokenSymbol": "META",
+      "tokenUsdPrice": "3.3260",
+      "icoPrice": "0.8054",
+      "icoReturn": "313.18",
+      "fundRaised": "8054207",
+      "fundsAccepted": "8054207",
+      "icoInvestors": 5035,
+      "holdersCount": 5099,
+      "organizationSlug": "metadao"
+    }
+  ]
+}
+```
+</Accordion>
+
+| Field | Description |
+|-------|-------------|
+| `icoReturn` | % return from ICO price to current price. Formula: `((current price - ICO price) / ICO price) × 100` |
+| `fundRaised` | Total capital committed during the ICO |
+| `fundsAccepted` | Capital actually accepted (may be less if oversubscribed) |
+
+---
+
+## GET /api/v1/global-dashboard/recent-launches
+
+Returns recent ICO launches including live and upcoming.
+
+**Parameters:** `limit`, `page`
+
+**Response per launch:** `launchAddr`, `title`, `tokenSymbol`, `state`, `minimumRaiseAmount`, `committedAmount`, `organizationSlug`
+
+---
+
+## GET /api/v1/global-dashboard/graveyard-launches
+
+Returns failed or liquidated launches — projects that did not meet their minimum raise.
+
+**Response:** `{title, tokenSymbol, reasonStatus: "liquidated", minimumRaiseAmount, committedAmount, fundsAccepted, icoInvestors}`
+
+**Ranger example:** $86.4M committed, $8M accepted, 8,761 investors — liquidated.
+
+---
+
+## GET /api/v1/global-dashboard/search
+
+Returns global search results across projects and proposals.
+
+**Parameters:** `search` (query string)

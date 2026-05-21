@@ -1,0 +1,93 @@
+---
+title: "Rate Limits & Errors"
+description: "Rate limiting, error codes, and response format."
+icon: "gauge-high"
+---
+
+## Rate Limits
+
+Rate limits are applied per API key.
+
+| Key Type | Limit |
+|----------|-------|
+| Partner | 600 requests / minute |
+
+When you exceed the limit the API returns `429 Too Many Requests`. Back off and retry after 60 seconds.
+
+<Note>
+  Paid tiers with configurable rate limits per endpoint are coming soon.
+</Note>
+
+## Response Format
+
+All responses follow a consistent envelope:
+
+```json
+{
+  "meta": {
+    "code": 200,
+    "message": "Successful"
+  },
+  "data": { }
+}
+```
+
+Paginated responses include additional meta fields:
+
+```json
+{
+  "meta": {
+    "code": 200,
+    "message": "Successful",
+    "totalItems": 263,
+    "itemCount": 10,
+    "itemsPerPage": 10,
+    "totalPages": 27,
+    "currentPage": 1
+  },
+  "data": [ ]
+}
+```
+
+**Pagination parameters:**
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `limit` | number | 10 | Items per page |
+| `page` | number | 1 | Page number |
+
+**Timestamps** are ISO 8601 UTC strings: `"2026-05-18T03:43:13.000Z"`
+
+**Numeric precision values** (token amounts, prices, percentages) are returned as strings to avoid floating-point loss.
+
+## Error Codes
+
+| Code | Meaning |
+|------|---------|
+| `200` | Success |
+| `400` | Bad Request — missing or invalid parameter |
+| `401` | Unauthorized — missing or invalid API key |
+| `404` | Not Found — resource does not exist |
+| `429` | Too Many Requests — rate limit exceeded |
+
+Error responses follow the same envelope:
+
+```json
+{
+  "meta": {
+    "code": 400,
+    "message": "timeInterval must be one of the following values: 15m, 1h, 4h, 1d, max",
+    "error": "Bad Request"
+  },
+  "data": null
+}
+```
+
+## Known Issues
+
+The following endpoints have backend bugs and should be avoided:
+
+| Endpoint | Issue | Alternative |
+|----------|-------|-------------|
+| `GET /global-dashboard/completed-launches` | SQL error | Use `/completed-launches/info` instead |
+| `GET /global-dashboard/overview/ownership-coins` | SQL error | Use `/global-dashboard/projects-launch` instead |

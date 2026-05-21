@@ -1,0 +1,59 @@
+---
+title: "API Reference"
+description: "Complete reference for all 01Resolved API endpoints."
+icon: "terminal"
+---
+
+## Base URL
+
+```
+https://01resolved.var-meta.com
+```
+
+All endpoints are prefixed with `/api/v1/`.
+
+## Authentication
+
+Include your API key in the `x-api-key` header on every request.
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" \
+  "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+```
+
+## Endpoint Groups
+
+<CardGroup cols={2}>
+  <Card title="DAO" icon="building" href="/api-reference/dao">
+    Treasury, account registry, revenues, expenses, token supply, and project timeline for any tracked DAO.
+  </Card>
+  <Card title="Proposals" icon="ballot" href="/api-reference/proposals">
+    Proposal lists, full proposal text, pass edge, market overview, orders, and conviction analytics.
+  </Card>
+  <Card title="Trading Activity" icon="arrows-rotate" href="/api-reference/trading-activity">
+    Aggregate trading stats and individual trades for a DAO or a specific wallet address.
+  </Card>
+  <Card title="Global Dashboard" icon="globe" href="/api-reference/global-dashboard">
+    Ecosystem-wide totals, all proposals across all DAOs, ICO data, and project snapshots.
+  </Card>
+  <Card title="Project Overview" icon="chart-bar" href="/api-reference/project-overview">
+    Token metrics, ICO details, contributor stats, token distribution, and vesting schedules.
+  </Card>
+  <Card title="Legal Entities" icon="scale-balanced" href="/api-reference/legal-entities">
+    DAO and OpCo legal entity registrations, jurisdictions, and entity names.
+  </Card>
+</CardGroup>
+
+## Power Endpoints
+
+The most useful endpoints for common use cases:
+
+| Use Case | Endpoint |
+|----------|----------|
+| Weekly ecosystem snapshot | `GET /global-dashboard/projects-launch` |
+| All active proposals right now | `GET /global-dashboard/decision-markets` |
+| Is this live proposal passing? | `GET /proposal/{key}/pass-edge` |
+| Full proposal text | `GET /proposal/{key}` → `content` field |
+| Treasury health for one project | `GET /dao/treasury/overview?slug=` |
+| All trades for one DAO ever | `GET /trading-activity/{slug}/trading-activities` |
+| Failed ICO history | `GET /global-dashboard/graveyard-launches` |

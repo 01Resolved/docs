@@ -1,0 +1,123 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "01Resolved",
+  "colors": {
+    "primary": "#2E6DA4",
+    "light": "#5B9BD5",
+    "dark": "#1B3A5C",
+    "background": {
+      "dark": "#0D1B2A"
+    }
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Platform",
+        "href": "https://www.01resolved.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Access",
+      "href": "https://t.me/Official01Resolved"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Getting Started",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "index",
+              "essentials/authentication",
+              "essentials/rate-limits"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "essentials/core-concepts"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/dao",
+              "api-reference/proposals",
+              "api-reference/trading-activity",
+              "api-reference/global-dashboard",
+              "api-reference/project-overview",
+              "api-reference/legal-entities",
+              "api-reference/api-key"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Recipes",
+            "pages": [
+              "guides/use-cases"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "guides/project-slugs"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Platform",
+          "href": "https://www.01resolved.com",
+          "icon": "chart-line"
+        },
+        {
+          "anchor": "Telegram",
+          "href": "https://t.me/Official01Resolved",
+          "icon": "telegram"
+        }
+      ]
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/01Resolved",
+      "telegram": "https://t.me/Official01Resolved"
+    }
+  }
+}

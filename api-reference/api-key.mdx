@@ -1,0 +1,39 @@
+---
+title: "API Key"
+description: "Check your current API key configuration."
+icon: "key"
+---
+
+---
+
+## GET /api/v1/api-key/current
+
+Returns information about the API key making the current request.
+
+```bash
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/api-key/current"
+```
+
+<Accordion title="Example Response">
+```json
+{
+  "data": {
+    "id": 17,
+    "name": "Partner API Key",
+    "isActive": true,
+    "lastUsedAt": "2026-05-21T05:57:20.589Z",
+    "expiresAt": null,
+    "type": "partner",
+    "rateLimitPerMinute": 600
+  }
+}
+```
+</Accordion>
+
+| Field | Description |
+|-------|-------------|
+| `type` | Key type: `partner` (rate limited) or `internal` (no limit) |
+| `rateLimitPerMinute` | Current rate limit for this key |
+| `expiresAt` | Expiry timestamp, or `null` if no expiry |
+| `isActive` | Whether the key is currently valid |

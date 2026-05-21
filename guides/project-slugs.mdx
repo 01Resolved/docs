@@ -1,0 +1,67 @@
+---
+title: "Project Slugs"
+description: "All tracked projects and their slug values for use in API calls."
+icon: "list"
+---
+
+Use these `slug` values in the `?slug=` query parameter or `{daoSlug}` path parameter.
+
+---
+
+## Ownership Coins (Active ICOs)
+
+| Project | Slug | Token |
+|---------|------|-------|
+| MetaDAO | `metadao` | META |
+| Avici | `avici` | AVICI |
+| Solomon | `solomon` | SOLO |
+| P2P Protocol | `p2p-protocol` | P2P |
+| Umbra | `umbra` | UMBRA |
+| Omnipair | `omnipair` | OMFG |
+| Loyal | `loyal` | LOYAL |
+| Jurassic Finance | `jurassic-finance` | RAWR |
+| Paystream | `paystream` | PAYS |
+| ZKLSOL | `zklsol` | ZKFG |
+| Superclaw | `superclaw` | SUPER |
+| Futardio cult | `futardio-cult` | FUTARDIO |
+
+---
+
+## Additional Tracked Projects
+
+These projects use futarchy governance and are tracked for decision market activity but do not have active ownership coin ICOs.
+
+| Project | Slug |
+|---------|------|
+| Ranger | `ranger` |
+| Kyros | `kyros` |
+| Coal | `coal` |
+| Sanctum | `sanctum` |
+| MTN Capital | `mtncapital` |
+| Island DAO | `island-dao` |
+| Flash Trade | `flash-trade` |
+| Marinade | `marinade` |
+| ORE | `ore` |
+| Save DAO | `save-dao` |
+| Drift | `drift` |
+| Jito DAO | `jito-dao` |
+| FutureDAO | `futuredao` |
+| Kollan House | `kollan-house` |
+
+---
+
+## Example Usage
+
+```bash
+# MetaDAO treasury overview
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+
+# Sanctum proposal list
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/proposal?slug=sanctum&status=resolved"
+
+# Drift trading activity
+curl -H "x-api-key: YOUR_KEY" \
+  "https://01resolved.var-meta.com/api/v1/trading-activity/drift"
+```

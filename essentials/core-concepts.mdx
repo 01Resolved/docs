@@ -1,0 +1,76 @@
+---
+title: "Core Concepts"
+description: "Understanding ownership coins, futarchy, NAV, TWAP, and decision markets."
+icon: "book-open"
+---
+
+## Ownership Coins
+
+Ownership coins are tokens that give holders verifiable, enforceable ownership with onchain governance. Unlike prior-era tokens that promised ownership but delivered speculation, ownership coins are structurally different: treasury is publicly tracked, governance is enforced onchain, and spending is linked to approved proposals.
+
+01Resolved tracks all ownership coins launched through the MetaDAO ecosystem.
+
+## Futarchy
+
+Futarchy is a governance system where decisions are made by markets rather than token votes. Instead of voting yes or no on a proposal, token holders trade in conditional markets. The market outcome — based on the token's price — determines whether the proposal passes.
+
+The underlying logic: if traders believe a proposal will increase the DAO's value, the pass market price will exceed the fail market price, and the proposal is approved.
+
+## Decision Markets
+
+A decision market is a pair of conditional markets opened for each governance proposal: a **pass market** and a **fail market**. Traders buy or sell the governance token in each. The markets run for a fixed period, and the TWAP of each market at the end determines the outcome.
+
+## TWAP
+
+The TWAP (Time-Weighted Average Price) is the average price of the governance token over the decision market window, calculated as a time-weighted mean. It is more resistant to manipulation than a spot price. The TWAP starts accumulating after an initial delay (typically 24 hours after the market opens).
+
+## Pass Edge
+
+Pass edge is the percentage difference between the pass TWAP and the fail TWAP at a given moment.
+
+**Formula:** `(Pass TWAP - Fail TWAP) / Fail TWAP × 100`
+
+A positive pass edge means the market believes the proposal will pass. The required pass edge is set by the DAO's `passedThresholdBps` parameter (e.g. 300 bps = 3%).
+
+**Example:** If `passAndFailTWAPSpread` is `3.11%` and `twapThreshold` is `-3%`, the `twapThresholdMargin` is `6.11%`.
+
+## Economic Direction in Decision Markets
+
+Understanding how trades are classified economically is critical for interpreting tilt and conviction metrics.
+
+<Warning>
+  **Fail-sell is economically pro-Pass.** This is counterintuitive but important: selling the fail conditional token reduces liquidity in the fail market, pushing the fail price down — effectively betting on the proposal passing. All tilt and conviction metrics account for this.
+</Warning>
+
+| Direction | Economic Alignment |
+|-----------|-------------------|
+| Pass-Buy | Pro-Pass |
+| Fail-Sell | Pro-Pass |
+| Fail-Buy | Pro-Fail |
+| Pass-Sell | Pro-Fail |
+
+## NAV (Net Asset Value)
+
+NAV is the value of the DAO's treasury divided by the circulating token supply. It represents the per-token book value of the underlying assets.
+
+**Formula:** `Treasury Value / Circulating Supply`
+
+A token trading at a premium to NAV means the market is pricing in the DAO's future earning potential beyond its current assets. A discount to NAV suggests undervaluation or uncertainty.
+
+## mNAV
+
+mNAV is the ratio of the token's market capitalization to the DAO's total treasury value — similar to price-to-book ratio in traditional finance.
+
+**Formula:** `Market Cap / Treasury Value`
+
+A high mNAV can signal relative overvaluation compared to treasury assets. A low mNAV can signal relative undervaluation.
+
+## Treasury Intelligence
+
+01Resolved classifies every DAO wallet and transaction. The account registry labels each wallet by its function (Main, Market Making, LP positions, etc.) and custody type. Every treasury movement is classified and linked to its governance context where applicable.
+
+<Note>
+  **Treasury value** includes assets held directly in DAO wallets **and** the value of assets held in LP positions.
+
+  Formula: `SUM((asset × price) + ... + (LP position 1 value) + (LP position 2 value))`
+</Note>
