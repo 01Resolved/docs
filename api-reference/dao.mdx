@@ -10,7 +10,7 @@ All DAO endpoints accept a `slug` query parameter to specify the project. See th
 
 ## GET /api/v1/dao/overview
 
-Returns on-chain configuration and token metadata for a DAO.
+Returns onchain configuration and token metadata for a DAO.
 
 **Parameters:** `slug` (query, string)
 
@@ -85,7 +85,7 @@ curl -H "x-api-key: YOUR_KEY" \
 | Field | Description |
 |-------|-------------|
 | `totalBalance` | Total treasury value in USD |
-| `netAssetValue` | NAV — treasury value divided by circulating supply (per-token USD book value) |
+| `netAssetValue` | NAV: treasury value divided by circulating supply (per-token USD book value) |
 | `spendingLimit` | Monthly spending allowance in USDC |
 | `monthOfRunway` | Months of runway. Formula: `treasury value / (monthly spend limit + other monthly expenses)` |
 
@@ -93,7 +93,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ## GET /api/v1/dao/treasury
 
-Returns the full treasury breakdown — every tracked wallet and every token held.
+Returns the full treasury breakdown: every tracked wallet and every token held.
 
 **Parameters:** `slug` (query, string)
 
@@ -164,7 +164,7 @@ Returns monthly revenue broken down by source.
 
 **Response:** `[{period, interval, details: [{source, revenue}], revenue}]`
 
-**MetaDAO example:** Sep 2025 — $216 protocol fees. Oct 2025 — $53,785 protocol fees.
+**MetaDAO example:** Sep 2025: $216 protocol fees. Oct 2025: $53,785 protocol fees.
 
 ---
 
@@ -174,7 +174,7 @@ Returns cumulative revenue in USD.
 
 **Parameters:** `slug`
 
-**Response:** `{totalRevenue}` — MetaDAO: $3,818,247
+**Response:** `{totalRevenue}`: MetaDAO: $3,818,247
 
 ---
 
