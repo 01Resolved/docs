@@ -6,40 +6,58 @@ icon: "book-open"
 
 ## Ownership Coins
 
-Ownership coins are tokens that give holders verifiable, enforceable ownership with onchain governance. Unlike prior-era tokens that promised ownership but delivered speculation, ownership coins are structurally different: treasury is publicly tracked, governance is enforced onchain, and spending is linked to approved proposals.
+Ownership coins are tokens that give holders verifiable ownership and enforceable rights over an onchain organization. They differ from prior-era tokens because the treasury, IP, mint authority, and major spending decisions are placed under tokenholder-governed market oversight rather than discretionary team control.
 
-01Resolved tracks all ownership coins launched through the MetaDAO ecosystem.
+01Resolved tracks ownership coins across the MetaDAO ecosystem and beyond by turning treasury flows, proposal outcomes, decision markets, and wallet-level participation into structured intelligence.
 
 ## Futarchy
 
-Futarchy is a governance system where decisions are made by markets rather than token votes. Instead of voting yes or no on a proposal, token holders trade in conditional markets. The market outcome — based on the token's price — determines whether the proposal passes.
+Futarchy is market-based governance first proposed by economist Robin Hanson and often summarized as "vote on values, bet on beliefs." Instead of tokenholders voting directly on whether a proposal should pass, traders allocate capital between conditional markets for approved and rejected outcomes.
 
-The underlying logic: if traders believe a proposal will increase the DAO's value, the pass market price will exceed the fail market price, and the proposal is approved.
+In MetaDAO-style implementations, the proposal passes if the approved market prices the organization above the rejected market by more than the required threshold during the TWAP window.
+
+## Proposals
+
+A proposal is an onchain governance action submitted to an ownership coin organization. Proposals can authorize treasury spending, buybacks, mints, burns, liquidity changes, acquisitions, liquidation, or other material actions. On 01Resolved, proposals are tracked from creation through market resolution.
+
+## Proposal Status
+
+Proposal status shows where a proposal sits in the ownership coin lifecycle.
+
+| Status | Description |
+|--------|-------------|
+| Initiated | The proposal has been created but has not yet received the required amount of staked native tokens to go live |
+| Live | The staking requirement has been met and the decision market is active |
+| Resolved | The market has completed and the proposal outcome has been determined |
 
 ## Decision Markets
 
-A decision market is a pair of conditional markets opened for each governance proposal: a **pass market** and a **fail market**. Traders buy or sell the governance token in each. The markets run for a fixed period, and the TWAP of each market at the end determines the outcome.
+A decision market is a pair of conditional markets used to decide a governance proposal. One market prices the organization if the proposal is approved, while the other prices the organization if the proposal is rejected.
+
+Traders buy or sell exposure in each market, and the proposal passes only if the approved market prices the organization above the rejected market by more than the required threshold during the TWAP window. The signal is the spread between the two conditional markets, not a token vote.
 
 ## TWAP
 
-The TWAP (Time-Weighted Average Price) is the average price of the governance token over the decision market window, calculated as a time-weighted mean. It is more resistant to manipulation than a spot price. The TWAP starts accumulating after an initial delay (typically 24 hours after the market opens).
+The TWAP window is the period during which market prices count toward the proposal outcome. Trading before the TWAP window can shape expectations, but it does not determine execution. Only prices during the TWAP window are used to calculate the approved and rejected TWAPs that decide whether the proposal passes.
+
+<Note>
+  Pre-TWAP trading shapes expectations, but only TWAP-window pricing counts toward execution.
+</Note>
 
 ## Pass Edge
 
-Pass edge is the percentage difference between the pass TWAP and the fail TWAP at a given moment.
+Pass Edge is the percentage spread between the approved TWAP and the rejected TWAP. It shows whether the approved market is pricing the organization above or below the rejected market. A positive pass edge means the approved market is trading higher than the rejected market. A proposal only passes if the pass edge clears the configured threshold.
 
 **Formula:** `(Pass TWAP - Fail TWAP) / Fail TWAP × 100`
 
-A positive pass edge means the market believes the proposal will pass. The required pass edge is set by the DAO's `passedThresholdBps` parameter (e.g. 300 bps = 3%).
+**Example:** If `passAndFailTWAPSpread` is `3.11%` and `twapThreshold` is `-3%`, the `twapThresholdMargin` is `6.11%` — the proposal is passing by 6.11 percentage points above the required threshold.
 
-**Example:** If `passAndFailTWAPSpread` is `3.11%` and `twapThreshold` is `-3%`, the `twapThresholdMargin` is `6.11%`.
+## Economic Direction
 
-## Economic Direction in Decision Markets
-
-Understanding how trades are classified economically is critical for interpreting tilt and conviction metrics.
+Economic Direction classifies trades by the outcome they economically support, not just by the surface trade type.
 
 <Warning>
-  **Fail-sell is economically pro-Pass.** This is counterintuitive but important: selling the fail conditional token reduces liquidity in the fail market, pushing the fail price down — effectively betting on the proposal passing. All tilt and conviction metrics account for this.
+  **Fail-Sell is economically pro-Pass.** Selling exposure to the rejected outcome pushes the rejected market down, which widens the spread in favor of approval. 01Resolved tilt and conviction metrics classify trades by economic exposure rather than surface trade direction.
 </Warning>
 
 | Direction | Economic Alignment |
@@ -49,28 +67,22 @@ Understanding how trades are classified economically is critical for interpretin
 | Fail-Buy | Pro-Fail |
 | Pass-Sell | Pro-Fail |
 
-## NAV (Net Asset Value)
+## NAV
 
-NAV is the value of the DAO's treasury divided by the circulating token supply. It represents the per-token book value of the underlying assets.
+NAV is calculated using the Adjusted Supply (AS) framework. The formula is DAO-owned non-native asset value divided by the economically active token supply.
 
-**Formula:** `Treasury Value / Circulating Supply`
+This excludes protocol-controlled tokens, unvested team and investor allocations, and tokens held in protocol-owned LP positions.
 
-A token trading at a premium to NAV means the market is pricing in the DAO's future earning potential beyond its current assets. A discount to NAV suggests undervaluation or uncertainty.
+If NAV (AS) is greater than spot price, the project is trading at a relative discount. If NAV (AS) is less than spot price, the project is trading at a relative premium.
 
 ## mNAV
 
-mNAV is the ratio of the token's market capitalization to the DAO's total treasury value — similar to price-to-book ratio in traditional finance.
+mNAV is fully diluted market capitalization divided by DAO-owned non-native asset value. It shows how many times the market is valuing the project relative to its non-native treasury backing.
 
-**Formula:** `Market Cap / Treasury Value`
+**Formula:** `mNAV = FDV / DAO-owned non-native asset value`
 
-A high mNAV can signal relative overvaluation compared to treasury assets. A low mNAV can signal relative undervaluation.
+An mNAV of 3.0 means the project trades at 3x its DAO-owned non-native asset value.
 
-## Treasury Intelligence
+## OpenBooks
 
-01Resolved classifies every DAO wallet and transaction. The account registry labels each wallet by its function (Main, Market Making, LP positions, etc.) and custody type. Every treasury movement is classified and linked to its governance context where applicable.
-
-<Note>
-  **Treasury value** includes assets held directly in DAO wallets **and** the value of assets held in LP positions.
-
-  Formula: `SUM((asset × price) + ... + (LP position 1 value) + (LP position 2 value))`
-</Note>
+OpenBooks is 01Resolved's financial record system for ownership coins. It turns raw onchain wallet activity into structured financial data by maintaining account registries, classifying treasury movements, linking spending to approved proposals, tracking mint and burn events, and separating DAO-controlled funds from operational or offchain accounts where data is available.
