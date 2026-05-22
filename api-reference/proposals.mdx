@@ -58,8 +58,8 @@ curl -H "x-api-key: YOUR_KEY" \
 |-------|-------------|
 | `publicKey` | On-chain proposal address. Use as the `{publicKey}` path param in detail endpoints |
 | `result` | Final outcome: `approved`, `rejected`, or `""` (pending) |
-| `netPassVolumeTilt` | Net % of volume economically aligned with pass. Formula: `((pass-buy vol + fail-sell vol) - (fail-buy vol + pass-sell vol)) / total × 100`. **Fail-sell is Pass-aligned.** Positive = net capital was economically aligned with approval. This is a market-implied signal, not proof that the proposal was objectively value-accretive. |
-| `netPassTraderTilt` | Net % of traders economically aligned with pass. Same logic applied to trader counts. Positive = more participating wallets were economically aligned with approval than rejection. This is a market-implied signal, not proof that the proposal was objectively value-accretive. |
+| `netPassVolumeTilt` | Net % of volume economically aligned with pass. Formula: `((pass-buy vol + fail-sell vol) - (fail-buy vol + pass-sell vol)) / total × 100`. **Fail-sell is Pass-aligned.** Positive = net volume was economically aligned with approval. This is a market-implied signal, not proof that the proposal was objectively value-accretive. |
+| `netPassTraderTilt` | Net % of traders economically aligned with pass. Same logic applied to trader counts. Positive = more participating wallets were economically aligned with approval. This is a market-implied signal, not proof that the proposal was objectively value-accretive. |
 | `passAndFailTWAPSpread` | Spread between pass and fail TWAP. Formula: `((pass TWAP - fail TWAP) / fail TWAP) × 100` |
 | `twapThreshold` | Minimum pass edge required for approval. A positive threshold means the pass TWAP must exceed the fail TWAP by that amount. A negative threshold means the pass TWAP may underperform the fail TWAP by up to that amount and still pass. |
 | `twapThresholdMargin` | How far above the threshold: `passAndFailTWAPSpread - twapThreshold`. Negative = rejected. |

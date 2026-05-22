@@ -50,10 +50,11 @@ curl -H "x-api-key: YOUR_KEY" \
 
 | Field | Description |
 |-------|-------------|
-| `spendingLimit` | Max per-proposal spend in raw token units. Divide by 10^6 for USDC value |
+| `spendingLimit` | Monthly spend limit in raw token units. Divide by 10^6 for USDC value |
 | `passedThresholdBps` | TWAP pass threshold in basis points (300 = 3%) |
 | `baseToStake` | Governance tokens required to open a proposal. Divide by 10^6 |
 | `twapStartDelaySeconds` | Seconds after market open before TWAP starts (86400 = 24h) |
+| `teamSponsoredPassThresholdBps` | Approval threshold for team-sponsored proposals, in basis points. Negative values reduce the required pass edge. |
 
 ---
 
@@ -86,7 +87,7 @@ curl -H "x-api-key: YOUR_KEY" \
 |-------|-------------|
 | `totalBalance` | Total treasury value in USD |
 | `netAssetValue` | NAV: treasury value divided by circulating supply (per-token USD book value) |
-| `spendingLimit` | Monthly spending allowance in USDC |
+| `spendingLimit` | Monthly spend limit in USDC |
 | `monthOfRunway` | Months of runway. Formula: `treasury value / (monthly spend limit + other monthly expenses)` |
 
 ---
