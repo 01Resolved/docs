@@ -58,7 +58,7 @@ curl -H "x-api-key: YOUR_KEY" \
 |-------|-------------|
 | `publicKey` | On-chain proposal address. Use as the `{publicKey}` path param in detail endpoints |
 | `result` | Final outcome: `approved`, `rejected`, or `""` (pending) |
-| `netPassVolumeTilt` | Net % of volume economically aligned with pass. Formula: `((pass-buy vol + fail-sell vol) - (fail-buy vol + pass-sell vol)) / total × 100`. **Fail-sell is pro-Pass.** |
+| `netPassVolumeTilt` | Net % of volume economically aligned with pass. Formula: `((pass-buy vol + fail-sell vol) - (fail-buy vol + pass-sell vol)) / total × 100`. **Fail-sell is Pass-aligned.** |
 | `netPassTraderTilt` | Net % of traders economically aligned with pass. Same logic applied to trader counts. |
 | `passAndFailTWAPSpread` | Spread between pass and fail TWAP. Formula: `((pass TWAP - fail TWAP) / fail TWAP) × 100` |
 | `twapThreshold` | Minimum spread required for approval |
@@ -228,7 +228,7 @@ Returns a detailed breakdown of pass vs fail conviction by trader count and capi
 | Field | Description |
 |-------|-------------|
 | `passThresholdClearance` | `(Pass and Fail TWAP Spread %) - (TWAP Threshold %)`. Positive = passing above threshold. |
-| `traderByEconomicDirection.passAligned` | % of traders economically aligned with pass. Pass-aligned = pass-buy + fail-sell traders. **Fail-sell is pro-Pass.** |
+| `traderByEconomicDirection.passAligned` | % of traders economically aligned with pass. Pass-aligned = pass-buy + fail-sell traders. **Fail-sell is Pass-aligned.** |
 | `lateConvictionLevel` | `\|NVT_twap - NVT_pre_twap\|`. Low < 5%, Medium 5–12%, High ≥ 12%. |
 
 ---

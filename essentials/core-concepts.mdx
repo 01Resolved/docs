@@ -12,9 +12,9 @@ Ownership coins are tokens that give holders verifiable ownership and enforceabl
 
 ## Futarchy
 
-Futarchy is market-based governance first proposed by economist Robin Hanson and often summarized as "vote on values, bet on beliefs." Instead of tokenholders voting directly on whether a proposal should pass, traders allocate capital between conditional markets for approved and rejected outcomes.
+Futarchy is market-based governance first proposed by economist Robin Hanson and often summarized as "vote on values, bet on beliefs." Instead of tokenholders voting directly on whether a proposal should pass, traders allocate capital between conditional markets for pass and fail outcomes.
 
-In MetaDAO-style implementations, the proposal passes if the approved market prices the organization above the rejected market by more than the required threshold during the TWAP window.
+In MetaDAO-style implementations, the proposal passes if the pass market prices the organization above the fail market by more than the required threshold during the TWAP window.
 
 ## Proposals
 
@@ -32,13 +32,13 @@ Proposal status shows where a proposal sits in the ownership coin lifecycle.
 
 ## Decision Markets
 
-A decision market is a pair of conditional markets used to decide a governance proposal. One market prices the organization if the proposal is approved, while the other prices the organization if the proposal is rejected.
+A decision market is a pair of conditional markets used to decide a governance proposal. One market prices the organization if the proposal passes, while the other prices the organization if the proposal fails.
 
-Traders buy or sell exposure in each market, and the proposal passes only if the approved market prices the organization above the rejected market by more than the required threshold during the TWAP window. The signal is the spread between the two conditional markets, not a token vote.
+Traders buy or sell exposure in each market, and the proposal passes only if the pass market prices the organization above the fail market by more than the required threshold during the TWAP window. The signal is the spread between the two conditional markets, not a token vote.
 
 ## TWAP
 
-The TWAP window is the period during which market prices count toward the proposal outcome. Trading before the TWAP window can shape expectations, but it does not determine execution. Only prices during the TWAP window are used to calculate the approved and rejected TWAPs that decide whether the proposal passes.
+The TWAP window is the period during which market prices count toward the proposal outcome. Trading before the TWAP window can shape expectations, but it does not determine execution. Only prices during the TWAP window are used to calculate the pass and fail TWAPs that decide whether the proposal passes.
 
 <Note>
   Pre-TWAP trading shapes expectations, but only TWAP-window pricing counts toward execution.
@@ -46,7 +46,7 @@ The TWAP window is the period during which market prices count toward the propos
 
 ## Pass Edge
 
-Pass Edge is the percentage spread between the approved TWAP and the rejected TWAP. It shows whether the approved market is pricing the organization above or below the rejected market. A positive pass edge means the approved market is trading higher than the rejected market. A proposal only passes if the pass edge clears the configured threshold.
+Pass Edge is the percentage spread between the pass TWAP and the fail TWAP. It shows whether the pass market is pricing the organization above or below the fail market. A positive pass edge means the pass market is trading higher than the fail market. A proposal only passes if the pass edge clears the configured threshold.
 
 **Formula:** `(Pass TWAP - Fail TWAP) / Fail TWAP × 100`
 
@@ -57,15 +57,15 @@ Pass Edge is the percentage spread between the approved TWAP and the rejected TW
 Economic Direction classifies trades by the outcome they economically support, not just by the surface trade type.
 
 <Warning>
-  **Fail-Sell is economically pro-Pass.** Selling exposure to the rejected outcome pushes the rejected market down, which widens the spread in favor of approval. 01Resolved tilt and conviction metrics classify trades by economic exposure rather than surface trade direction.
+  **Fail-Sell is Pass-aligned.** Selling exposure to the fail outcome pushes the fail market down, which widens the spread in favor of the proposal passing. 01Resolved tilt and conviction metrics classify trades by economic exposure rather than surface trade direction.
 </Warning>
 
 | Direction | Economic Alignment |
 |-----------|-------------------|
-| Pass-Buy | Pro-Pass |
-| Fail-Sell | Pro-Pass |
-| Fail-Buy | Pro-Fail |
-| Pass-Sell | Pro-Fail |
+| Pass-Buy | Pass-aligned |
+| Fail-Sell | Pass-aligned |
+| Fail-Buy | Fail-aligned |
+| Pass-Sell | Fail-aligned |
 
 ## NAV
 
