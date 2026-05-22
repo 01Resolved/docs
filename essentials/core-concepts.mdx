@@ -46,11 +46,19 @@ The TWAP window is the period during which market prices count toward the propos
 
 ## Pass Edge
 
-Pass Edge is the percentage spread between the pass TWAP and the fail TWAP. It shows whether the pass market is pricing the organization above or below the fail market. A positive pass edge means the pass market is trading higher than the fail market. A proposal only passes if the pass edge clears the configured threshold.
+Pass Edge is the percentage spread between the pass TWAP and fail TWAP.
 
-**Formula:** `(Pass TWAP - Fail TWAP) / Fail TWAP × 100`
+```
+passEdge = ((passTwapPrice - failTwapPrice) / failTwapPrice) × 100
+```
 
-**Example:** If `passAndFailTWAPSpread` is `3.11%` and `twapThreshold` is `-3%`, the `twapThresholdMargin` is `6.11%`: the proposal is passing by 6.11 percentage points above the required threshold.
+A proposal passes when:
+
+```
+passEdge >= twapThreshold
+```
+
+For example, if `passEdge` is `3.11%` and `twapThreshold` is `-3.00%`, then `twapThresholdMargin` is `6.11%`. The proposal is clearing the approval threshold by 6.11 percentage points.
 
 ## Economic Direction
 
@@ -86,3 +94,11 @@ An mNAV of 3.0 means the project trades at 3x its DAO-owned non-native asset val
 ## OpenBooks
 
 OpenBooks is 01Resolved's financial record system for ownership coins. It turns raw onchain wallet activity into structured financial data by maintaining account registries, classifying treasury movements, linking spending to approved proposals, tracking mint and burn events, and separating DAO-controlled funds from operational or offchain accounts where data is available.
+
+## Coverage and Methodology Notes
+
+01Resolved data is derived primarily from Solana onchain activity and internal classification systems. Treasury accounts, LP positions, proposal-linked transactions, mints, burns, and known counterparties are classified by 01Resolved.
+
+Offchain assets, liabilities, exchange balances, market maker allocations, bank accounts, or operating company expenses are only included where they are disclosed, project-reported, or otherwise verifiable.
+
+Financial metrics such as NAV, treasury value, runway, premium/discount, and mNAV should be treated as structured intelligence derived from available data, not audited financial statements.
