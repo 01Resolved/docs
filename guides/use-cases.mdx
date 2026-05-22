@@ -12,7 +12,7 @@ Get token price, treasury, NAV, mNAV, premium/discount, and runway for every tra
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/projects-launch"
+  "https://api.01resolved.com/api/v1/global-dashboard/projects-launch"
 ```
 
 Returns all 12+ ownership coins with `tokenUsdPrice`, `treasuryValue`, `netAssetValue`, `mNAV`, `premDisc`, and `monthsOfRunway` for each.
@@ -23,7 +23,7 @@ Returns all 12+ ownership coins with `tokenUsdPrice`, `treasuryValue`, `netAsset
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/decision-markets?limit=50"
+  "https://api.01resolved.com/api/v1/global-dashboard/decision-markets?limit=50"
 ```
 
 Filter on `status` field for `live` proposals. Sort by `volume` to prioritize by significance.
@@ -34,7 +34,7 @@ Filter on `status` field for `live` proposals. Sort by `volume` to prioritize by
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM/pass-edge"
+  "https://api.01resolved.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM/pass-edge"
 ```
 
 Check `proposalTwapStatus`: `approve`, `reject`, or `pending`. Use `approveRejectTwapDifference` for the current margin.
@@ -46,11 +46,11 @@ Check `proposalTwapStatus`: `approve`, `reject`, or `pending`. Use `approveRejec
 ```bash
 # Headline: total balance, NAV, runway
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/treasury/overview?slug=metadao"
 
 # Detail: every wallet and every token held
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/treasury?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/treasury?slug=metadao"
 ```
 
 ---
@@ -59,7 +59,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
+  "https://api.01resolved.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
 ```
 
 The `content` field contains the full proposal body in markdown format.
@@ -71,15 +71,15 @@ The `content` field contains the full proposal body in markdown format.
 ```bash
 # All trades, paginated
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/FG93Keo.../orders?limit=100"
+  "https://api.01resolved.com/api/v1/proposal/FG93Keo.../orders?limit=100"
 
 # Trade conviction breakdown
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/analytics/FG93Keo.../outcome-strength"
+  "https://api.01resolved.com/api/v1/proposal/analytics/FG93Keo.../outcome-strength"
 
 # How conviction changed over time
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/analytics/FG93Keo.../conviction-chart"
+  "https://api.01resolved.com/api/v1/proposal/analytics/FG93Keo.../conviction-chart"
 ```
 
 ---
@@ -89,11 +89,11 @@ curl -H "x-api-key: YOUR_KEY" \
 ```bash
 # All trades by this wallet
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/special-wallet?walletPublicKey=AWjCySKayUEQFdyBc4zLu7i35BfM3kxAmBxv8qwy1SC5"
+  "https://api.01resolved.com/api/v1/trading-activity/special-wallet?walletPublicKey=AWjCySKayUEQFdyBc4zLu7i35BfM3kxAmBxv8qwy1SC5"
 
 # Summary stats for this wallet
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCySKayUEQFdyBc4zLu7i35BfM3kxAmBxv8qwy1SC5"
+  "https://api.01resolved.com/api/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCySKayUEQFdyBc4zLu7i35BfM3kxAmBxv8qwy1SC5"
 ```
 
 ---
@@ -103,11 +103,11 @@ curl -H "x-api-key: YOUR_KEY" \
 ```bash
 # All completed ICOs with return data
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/completed-launches/info"
+  "https://api.01resolved.com/api/v1/global-dashboard/completed-launches/info"
 
 # Failed and liquidated launches
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/graveyard-launches"
+  "https://api.01resolved.com/api/v1/global-dashboard/graveyard-launches"
 ```
 
 ---
@@ -117,9 +117,9 @@ curl -H "x-api-key: YOUR_KEY" \
 ```bash
 # Overview: total minted, burned, net supply
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/token-supply/overview?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/token-supply/overview?slug=metadao"
 
 # Individual mint/burn events linked to proposals
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/token-supply?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/token-supply?slug=metadao"
 ```

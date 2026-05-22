@@ -21,7 +21,7 @@ Returns a list of proposals for a DAO with full decision market analytics.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal?slug=metadao&status=resolved&limit=10"
+  "https://api.01resolved.com/api/v1/proposal?slug=metadao&status=resolved&limit=10"
 ```
 
 <Accordion title="Example Response">
@@ -75,7 +75,7 @@ Returns aggregate proposal counts for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/analytics?slug=metadao"
+  "https://api.01resolved.com/api/v1/proposal/analytics?slug=metadao"
 ```
 
 **Response:** `{defeated, succeeded, total}`: MetaDAO: 9 defeated, 28 succeeded, 37 total.
@@ -88,7 +88,7 @@ Returns full detail for a single proposal including the complete proposal text.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
+  "https://api.01resolved.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
 ```
 
 <Note>The `content` field contains the full proposal body in markdown format.</Note>
@@ -101,7 +101,7 @@ Returns the current TWAP status and pass edge. **The most direct way to check wh
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/proposal/FG93Keo.../pass-edge"
+  "https://api.01resolved.com/api/v1/proposal/FG93Keo.../pass-edge"
 ```
 
 <Accordion title="Example Response">

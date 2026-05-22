@@ -16,7 +16,7 @@ Returns onchain configuration and token metadata for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/overview?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/overview?slug=metadao"
 ```
 
 <Accordion title="Example Response">
@@ -65,7 +65,7 @@ Returns high-level treasury summary. The fastest way to get key financial metric
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/treasury/overview?slug=metadao"
 ```
 
 <Accordion title="Example Response">
@@ -125,7 +125,7 @@ Returns all wallets tracked for a DAO with balances, names, and custody type.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/account-registry?slug=metadao"
+  "https://api.01resolved.com/api/v1/dao/account-registry?slug=metadao"
 ```
 
 | Field | Description |
@@ -144,7 +144,7 @@ Returns classified treasury transactions with counterparty information.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/dao/movements?slug=metadao&limit=10"
+  "https://api.01resolved.com/api/v1/dao/movements?slug=metadao&limit=10"
 ```
 
 | Field | Description |

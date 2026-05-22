@@ -4,7 +4,7 @@ description: "Structured intelligence for ownership coins and decision markets o
 ---
 
 <Note>
-  The API is currently in **closed beta**. To request access, message the team on [Telegram](https://t.me/Official01Resolved).
+  The API is currently in **beta**. To request access, message the team on [Telegram](https://t.me/Official01Resolved).
 </Note>
 
 ## What you can build
@@ -17,10 +17,10 @@ description: "Structured intelligence for ownership coins and decision markets o
     Monitor live and initiated proposals across the entire ecosystem. Track pass edge in real time.
   </Card>
   <Card title="Decision Market Analytics" icon="chart-line">
-    TWAP tracking, conviction over time, trader behavior, and outcome strength for every governance vote.
+    Decision market trading tools including pass edge, economic trader and volume alignment, and conviction over time tracking.
   </Card>
   <Card title="ICO Research Tools" icon="magnifying-glass">
-    Historical fundraising data, ICO returns, contributor stats, and failed launch history.
+    Historical fundraising, participation, and return data.
   </Card>
   <Card title="Portfolio Trackers" icon="coins">
     Token price, NAV per token, mNAV, premium/discount, and runway for all 12+ ownership coins in one call.
@@ -40,14 +40,14 @@ description: "Structured intelligence for ownership coins and decision markets o
     Include your API key in every request using the `x-api-key` header.
     ```bash
     curl -H "x-api-key: YOUR_API_KEY" \
-      "https://01resolved.var-meta.com/api/v1/dao/treasury/overview?slug=metadao"
+      "https://api.01resolved.com/api/v1/dao/treasury/overview?slug=metadao"
     ```
   </Step>
   <Step title="Make your first call">
-    Get a live snapshot of every tracked project: token price, treasury, NAV, mNAV, and runway: in a single call.
+    Get a live snapshot of every tracked project: token price, treasury, NAV, mNAV, and runway in a single call.
     ```bash
     curl -H "x-api-key: YOUR_API_KEY" \
-      "https://01resolved.var-meta.com/api/v1/global-dashboard/projects-launch"
+      "https://api.01resolved.com/api/v1/global-dashboard/projects-launch"
     ```
   </Step>
 </Steps>
@@ -55,7 +55,7 @@ description: "Structured intelligence for ownership coins and decision markets o
 ## Base URL
 
 ```
-https://01resolved.var-meta.com
+https://api.01resolved.com
 ```
 
 All endpoints are prefixed with `/api/v1/`.

@@ -12,7 +12,7 @@ Returns aggregate decision market trading statistics for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/metadao"
+  "https://api.01resolved.com/api/v1/trading-activity/metadao"
 ```
 
 **Response:** `{totalVolume, totalTrades, totalUniqueTraders}`
@@ -29,7 +29,7 @@ Returns all individual trades across all proposals for a DAO, most recent first.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/metadao/trading-activities?limit=10"
+  "https://api.01resolved.com/api/v1/trading-activity/metadao/trading-activities?limit=10"
 ```
 
 <Accordion title="Example Response">
@@ -74,7 +74,7 @@ Returns all decision market trades placed by a specific wallet address.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/special-wallet?walletPublicKey=AWjCy...SC5&limit=10"
+  "https://api.01resolved.com/api/v1/trading-activity/special-wallet?walletPublicKey=AWjCy...SC5&limit=10"
 ```
 
 <Warning>
@@ -91,7 +91,7 @@ Returns aggregate trading statistics for a specific wallet address.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCy...SC5"
+  "https://api.01resolved.com/api/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCy...SC5"
 ```
 
 | Field | Description |

@@ -14,7 +14,7 @@ Returns all tracked projects with live token metrics, treasury data, NAV, and mN
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/projects-launch"
+  "https://api.01resolved.com/api/v1/global-dashboard/projects-launch"
 ```
 
 <Accordion title="Example Response (one project)">
@@ -60,7 +60,7 @@ Returns all proposals across all DAOs. **The best endpoint for monitoring ecosys
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/decision-markets?limit=50"
+  "https://api.01resolved.com/api/v1/global-dashboard/decision-markets?limit=50"
 ```
 
 **Response per proposal:** `project`, `projectSlug`, `proposal`, `publicKey`, `status`, `result`, `startDate`, `endDate`, `size`, `volume`, `trades`, `uniqueTraders`
@@ -75,7 +75,7 @@ Returns ecosystem-wide totals.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://01resolved.var-meta.com/api/v1/global-dashboard/overview/decision-markets"
+  "https://api.01resolved.com/api/v1/global-dashboard/overview/decision-markets"
 ```
 
 **Response:** `{totalProposals: 133, totalVolume: "14472484.44", totalTrades: 164786}`
