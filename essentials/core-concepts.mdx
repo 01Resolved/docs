@@ -77,19 +77,43 @@ Economic Direction classifies trades by the outcome they economically support, n
 
 ## NAV
 
-NAV is calculated using the Adjusted Supply (AS) framework. The formula is DAO-owned non-native asset value divided by the economically active token supply.
+01Resolved calculates two related NAV figures:
 
-This excludes protocol-controlled tokens, unvested team and investor allocations, and tokens held in protocol-owned LP positions.
+**NAV** is the total value of non-native assets held by the protocol treasury.
+
+```
+NAV = Treasury Stables + LP Value (non-native side) + Other Non-Native Holdings
+```
+
+**NAV (AS)** is NAV divided by the adjusted supply. It represents non-native asset backing per economically active token.
+
+```
+NAV (AS) = NAV / Adjusted Supply
+
+Adjusted Supply = Total Supply - Protocol-Controlled Tokens - Unvested Allocations
+```
 
 If NAV (AS) is greater than spot price, the project is trading at a relative discount. If NAV (AS) is less than spot price, the project is trading at a relative premium.
 
 ## mNAV
 
-mNAV is fully diluted market capitalization divided by DAO-owned non-native asset value. It shows how many times the market is valuing the project relative to its non-native treasury backing.
+mNAV is fully diluted market capitalization divided by total NAV (non-native asset value). It shows how many times the market is valuing the project relative to its non-native treasury backing.
 
-**Formula:** `mNAV = FDV / DAO-owned non-native asset value`
+```
+mNAV = Fully Diluted Market Cap / NAV
+```
 
-An mNAV of 3.0 means the project trades at 3x its DAO-owned non-native asset value.
+An mNAV of 3.0 means the project trades at 3x its non-native asset value.
+
+## Spot Premium / Discount to NAV
+
+The percentage difference between the current token price and NAV per adjusted token supply.
+
+```
+Premium / Discount = (Spot Price - NAV (AS)) / NAV (AS)
+```
+
+Positive = trading at a premium to non-native asset backing. Negative = trading at a discount.
 
 ## OpenBooks
 

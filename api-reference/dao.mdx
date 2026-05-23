@@ -86,7 +86,7 @@ curl -H "x-api-key: YOUR_KEY" \
 | Field | Description |
 |-------|-------------|
 | `totalBalance` | Total treasury value in USD |
-| `netAssetValue` | NAV: treasury value divided by circulating supply (per-token USD book value) |
+| `netAssetValue` | NAV (AS): non-native asset value divided by adjusted supply. Per-token non-native backing in USD. |
 | `spendingLimit` | Monthly spend limit in USDC |
 | `monthOfRunway` | Months of runway. Formula: `treasury value / (monthly spend limit + other monthly expenses)` |
 

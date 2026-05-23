@@ -27,7 +27,11 @@ curl -H "x-api-key: YOUR_KEY" \
       "organizationName": "MetaDAO",
       "tokenSymbol": "META",
       "tokenUsdPrice": "3.3260",
+      "tokenPriceChangePercentage1h": "0.41",
       "tokenPriceChangePercentage24h": "-1.98",
+      "tokenPriceChangePercentage7d": "9.46",
+      "tokenCirculatingSupply": "22684697.85",
+      "tokenTotalSupply": "22684697.85",
       "marketCap": "75432981.00",
       "fdv": "75432981.00",
       "treasuryValue": "12476348.74",
@@ -45,10 +49,20 @@ curl -H "x-api-key: YOUR_KEY" \
 
 | Field | Description |
 |-------|-------------|
-| `netAssetValue` | NAV per token in USD |
-| `mNAV` | Market cap / treasury value. High = potentially overvalued vs treasury. |
-| `premDisc` | Premium or discount to NAV %. Formula: `((token price - NAV) / NAV) × 100`. Positive = premium. |
-| `monthsOfRunway` | Months of treasury runway at current spend rate |
+| `tokenUsdPrice` | Current token price in USD |
+| `tokenPriceChangePercentage1h` | Price change over the last hour (%) |
+| `tokenPriceChangePercentage24h` | Price change over the last 24 hours (%) |
+| `tokenPriceChangePercentage7d` | Price change over the last 7 days (%) |
+| `tokenCirculatingSupply` | Tokens publicly available and actively circulating |
+| `tokenTotalSupply` | Total tokens in existence (vested and unvested). Formula: `total minted - total burned` |
+| `marketCap` | Market capitalization. Formula: `token price × circulating supply` |
+| `fdv` | Fully diluted valuation. Formula: `token price × total supply` |
+| `treasuryValue` | Total value of non-native assets held by the protocol treasury |
+| `spendingLimit` | Monthly spend limit in USDC |
+| `netAssetValue` | NAV (AS): non-native asset value divided by adjusted supply. Per-token backing in USD. |
+| `mNAV` | Fully diluted market cap divided by total NAV. Formula: `FDV / NAV`. High = trading at a premium to non-native asset backing. |
+| `premDisc` | Spot premium or discount to NAV (AS). Formula: `(spot price - NAV(AS)) / NAV(AS) × 100`. Positive = premium. |
+| `monthsOfRunway` | Months of runway. Formula: `treasury value / (monthly spend limit + other monthly expenses)` |
 
 ---
 
