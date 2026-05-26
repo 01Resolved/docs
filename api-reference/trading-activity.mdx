@@ -6,13 +6,13 @@ icon: "arrows-rotate"
 
 ---
 
-## GET /api/v1/trading-activity/{daoSlug}
+## GET /v1/trading-activity/{daoSlug}
 
 Returns aggregate decision market trading statistics for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/trading-activity/metadao"
+  "https://api.01resolved.com/v1/trading-activity/metadao"
 ```
 
 **Response:** `{totalVolume, totalTrades, totalUniqueTraders}`
@@ -21,7 +21,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/trading-activity/{daoSlug}/trading-activities
+## GET /v1/trading-activity/{daoSlug}/trading-activities
 
 Returns all individual trades across all proposals for a DAO, most recent first.
 
@@ -29,7 +29,7 @@ Returns all individual trades across all proposals for a DAO, most recent first.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/trading-activity/metadao/trading-activities?limit=10"
+  "https://api.01resolved.com/v1/trading-activity/metadao/trading-activities?limit=10"
 ```
 
 <Accordion title="Example Response">
@@ -57,7 +57,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/trading-activity/special-wallet
+## GET /v1/trading-activity/special-wallet
 
 Returns all decision market trades placed by a specific wallet address.
 
@@ -74,7 +74,7 @@ Returns all decision market trades placed by a specific wallet address.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/trading-activity/special-wallet?walletPublicKey=AWjCy...SC5&limit=10"
+  "https://api.01resolved.com/v1/trading-activity/special-wallet?walletPublicKey=AWjCy...SC5&limit=10"
 ```
 
 <Warning>
@@ -83,7 +83,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/trading-activity/special-wallet/overview
+## GET /v1/trading-activity/special-wallet/overview
 
 Returns aggregate trading statistics for a specific wallet address.
 
@@ -91,7 +91,7 @@ Returns aggregate trading statistics for a specific wallet address.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCy...SC5"
+  "https://api.01resolved.com/v1/trading-activity/special-wallet/overview?walletPublicKey=AWjCy...SC5"
 ```
 
 | Field | Description |

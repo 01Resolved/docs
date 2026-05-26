@@ -8,7 +8,7 @@ All DAO endpoints accept a `slug` query parameter to specify the project. See th
 
 ---
 
-## GET /api/v1/dao/overview
+## GET /v1/dao/overview
 
 Returns onchain configuration and token metadata for a DAO.
 
@@ -16,7 +16,7 @@ Returns onchain configuration and token metadata for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/dao/overview?slug=metadao"
+  "https://api.01resolved.com/v1/dao/overview?slug=metadao"
 ```
 
 <Accordion title="Example Response">
@@ -58,7 +58,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/dao/treasury/overview
+## GET /v1/dao/treasury/overview
 
 Returns high-level treasury summary. The fastest way to get key financial metrics.
 
@@ -66,7 +66,7 @@ Returns high-level treasury summary. The fastest way to get key financial metric
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/dao/treasury/overview?slug=metadao"
+  "https://api.01resolved.com/v1/dao/treasury/overview?slug=metadao"
 ```
 
 <Accordion title="Example Response">
@@ -92,7 +92,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/dao/treasury
+## GET /v1/dao/treasury
 
 Returns the full treasury breakdown: every tracked wallet and every token held.
 
@@ -108,7 +108,7 @@ Returns the full treasury breakdown: every tracked wallet and every token held.
 
 ---
 
-## GET /api/v1/dao/treasury/chart
+## GET /v1/dao/treasury/chart
 
 Returns hourly historical treasury value snapshots.
 
@@ -118,7 +118,7 @@ Returns hourly historical treasury value snapshots.
 
 ---
 
-## GET /api/v1/dao/account-registry
+## GET /v1/dao/account-registry
 
 Returns all wallets tracked for a DAO with balances, names, and custody type.
 
@@ -126,7 +126,7 @@ Returns all wallets tracked for a DAO with balances, names, and custody type.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/dao/account-registry?slug=metadao"
+  "https://api.01resolved.com/v1/dao/account-registry?slug=metadao"
 ```
 
 | Field | Description |
@@ -137,7 +137,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/dao/movements
+## GET /v1/dao/movements
 
 Returns classified treasury transactions with counterparty information.
 
@@ -145,7 +145,7 @@ Returns classified treasury transactions with counterparty information.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/dao/movements?slug=metadao&limit=10"
+  "https://api.01resolved.com/v1/dao/movements?slug=metadao&limit=10"
 ```
 
 | Field | Description |
@@ -157,7 +157,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/dao/revenues
+## GET /v1/dao/revenues
 
 Returns monthly revenue broken down by source.
 
@@ -169,7 +169,7 @@ Returns monthly revenue broken down by source.
 
 ---
 
-## GET /api/v1/dao/total-revenue
+## GET /v1/dao/total-revenue
 
 Returns cumulative revenue in USD.
 
@@ -179,7 +179,7 @@ Returns cumulative revenue in USD.
 
 ---
 
-## GET /api/v1/dao/total-expense
+## GET /v1/dao/total-expense
 
 Returns cumulative expenses in USD.
 
@@ -187,7 +187,7 @@ Returns cumulative expenses in USD.
 
 ---
 
-## GET /api/v1/dao/asset-allocation-breakdown
+## GET /v1/dao/asset-allocation-breakdown
 
 Returns treasury value summarized by wallet category.
 
@@ -197,7 +197,7 @@ Returns treasury value summarized by wallet category.
 
 ---
 
-## GET /api/v1/dao/list-asset-allocation-breakdown
+## GET /v1/dao/list-asset-allocation-breakdown
 
 Returns treasury breakdown by category with full wallet and token detail.
 
@@ -205,7 +205,7 @@ Returns treasury breakdown by category with full wallet and token detail.
 
 ---
 
-## GET /api/v1/dao/native-token-accounts
+## GET /v1/dao/native-token-accounts
 
 Returns where the DAO's own governance token is held across its treasury wallets.
 
@@ -215,7 +215,7 @@ Returns where the DAO's own governance token is held across its treasury wallets
 
 ---
 
-## GET /api/v1/dao/token-supply
+## GET /v1/dao/token-supply
 
 Returns all token mint and burn events linked to governance proposals.
 
@@ -231,7 +231,7 @@ Returns all token mint and burn events linked to governance proposals.
 
 ---
 
-## GET /api/v1/dao/token-supply/overview
+## GET /v1/dao/token-supply/overview
 
 Returns aggregate supply statistics.
 
@@ -241,7 +241,7 @@ Returns aggregate supply statistics.
 
 ---
 
-## GET /api/v1/dao/token-supply/chart
+## GET /v1/dao/token-supply/chart
 
 Returns daily circulating supply history.
 
@@ -251,7 +251,7 @@ Returns daily circulating supply history.
 
 ---
 
-## GET /api/v1/dao/project-timeline
+## GET /v1/dao/project-timeline
 
 Returns the date range covered by 01Resolved's data for this DAO.
 

@@ -6,7 +6,7 @@ icon: "globe"
 
 ---
 
-## GET /api/v1/global-dashboard/projects-launch
+## GET /v1/global-dashboard/projects-launch
 
 Returns all tracked projects with live token metrics, treasury data, NAV, and mNAV. **The most useful single endpoint for a weekly ecosystem snapshot.**
 
@@ -14,7 +14,7 @@ Returns all tracked projects with live token metrics, treasury data, NAV, and mN
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/global-dashboard/projects-launch"
+  "https://api.01resolved.com/v1/global-dashboard/projects-launch"
 ```
 
 <Accordion title="Example Response (one project)">
@@ -66,7 +66,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/global-dashboard/decision-markets
+## GET /v1/global-dashboard/decision-markets
 
 Returns all proposals across all DAOs. **The best endpoint for monitoring ecosystem-wide governance.**
 
@@ -74,7 +74,7 @@ Returns all proposals across all DAOs. **The best endpoint for monitoring ecosys
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/global-dashboard/decision-markets?limit=50"
+  "https://api.01resolved.com/v1/global-dashboard/decision-markets?limit=50"
 ```
 
 **Response per proposal:** `project`, `projectSlug`, `proposal`, `publicKey`, `status`, `result`, `startDate`, `endDate`, `size`, `volume`, `trades`, `uniqueTraders`
@@ -83,20 +83,20 @@ Filter on `status` for `live` proposals. Check `volume` to prioritize by signifi
 
 ---
 
-## GET /api/v1/global-dashboard/overview/decision-markets
+## GET /v1/global-dashboard/overview/decision-markets
 
 Returns ecosystem-wide totals.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/global-dashboard/overview/decision-markets"
+  "https://api.01resolved.com/v1/global-dashboard/overview/decision-markets"
 ```
 
 **Response:** `{totalProposals: 133, totalVolume: "14472484.44", totalTrades: 164786}`
 
 ---
 
-## GET /api/v1/global-dashboard/projects
+## GET /v1/global-dashboard/projects
 
 Returns all tracked DAOs with proposal activity summary.
 
@@ -106,7 +106,7 @@ Returns all tracked DAOs with proposal activity summary.
 
 ---
 
-## GET /api/v1/global-dashboard/projects/decision-markets
+## GET /v1/global-dashboard/projects/decision-markets
 
 Returns currently live or initiated proposals with staking progress and TWAP status.
 
@@ -117,7 +117,7 @@ Returns currently live or initiated proposals with staking progress and TWAP sta
 
 ---
 
-## GET /api/v1/global-dashboard/completed-launches/info
+## GET /v1/global-dashboard/completed-launches/info
 
 Returns completed ICOs with full fundraising data and current ICO return.
 
@@ -152,7 +152,7 @@ Returns completed ICOs with full fundraising data and current ICO return.
 
 ---
 
-## GET /api/v1/global-dashboard/recent-launches
+## GET /v1/global-dashboard/recent-launches
 
 Returns recent ICO launches including live and upcoming.
 
@@ -162,7 +162,7 @@ Returns recent ICO launches including live and upcoming.
 
 ---
 
-## GET /api/v1/global-dashboard/graveyard-launches
+## GET /v1/global-dashboard/graveyard-launches
 
 Returns failed or liquidated launches: projects that did not meet their minimum raise.
 
@@ -172,7 +172,7 @@ Returns failed or liquidated launches: projects that did not meet their minimum 
 
 ---
 
-## GET /api/v1/global-dashboard/search
+## GET /v1/global-dashboard/search
 
 Returns global search results across projects and proposals.
 

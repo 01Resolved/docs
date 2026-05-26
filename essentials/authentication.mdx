@@ -14,7 +14,7 @@ All requests to the 01Resolved API require an API key passed in the request head
 
 ```bash
 curl -H "x-api-key: YOUR_API_KEY" \
-  "https://api.01resolved.com/api/v1/dao/treasury/overview?slug=metadao"
+  "https://api.01resolved.com/v1/dao/treasury/overview?slug=metadao"
 ```
 
 Requests without a valid API key return `401 Unauthorized`.
@@ -31,11 +31,11 @@ Once approved you will receive an API key to include in all requests.
 
 ## Checking Your Key
 
-Use the `/api/v1/api-key/current` endpoint to verify your key and check its configuration.
+Use the `/v1/api-key/current` endpoint to verify your key and check its configuration.
 
 ```bash
 curl -H "x-api-key: YOUR_API_KEY" \
-  "https://api.01resolved.com/api/v1/api-key/current"
+  "https://api.01resolved.com/v1/api-key/current"
 ```
 
 ```json

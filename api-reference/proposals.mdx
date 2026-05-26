@@ -6,7 +6,7 @@ icon: "ballot"
 
 ---
 
-## GET /api/v1/proposal
+## GET /v1/proposal
 
 Returns a list of proposals for a DAO with full decision market analytics.
 
@@ -21,7 +21,7 @@ Returns a list of proposals for a DAO with full decision market analytics.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/proposal?slug=metadao&status=resolved&limit=10"
+  "https://api.01resolved.com/v1/proposal?slug=metadao&status=resolved&limit=10"
 ```
 
 <Accordion title="Example Response">
@@ -67,7 +67,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/proposal/analytics
+## GET /v1/proposal/analytics
 
 Returns aggregate proposal counts for a DAO.
 
@@ -75,33 +75,33 @@ Returns aggregate proposal counts for a DAO.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/proposal/analytics?slug=metadao"
+  "https://api.01resolved.com/v1/proposal/analytics?slug=metadao"
 ```
 
 **Response:** `{defeated, succeeded, total}`: MetaDAO: 9 defeated, 28 succeeded, 37 total.
 
 ---
 
-## GET /api/v1/proposal/{publicKey}
+## GET /v1/proposal/{publicKey}
 
 Returns full detail for a single proposal including the complete proposal text.
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
+  "https://api.01resolved.com/v1/proposal/FG93KeoUdUmBtTcxWhJZicc6ef824qccpFdesbw2RJjM"
 ```
 
 <Note>The `content` field contains the full proposal body in markdown format.</Note>
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/pass-edge
+## GET /v1/proposal/{publicKey}/pass-edge
 
 Returns the current TWAP status and pass edge. **The most direct way to check whether a live proposal is passing.**
 
 ```bash
 curl -H "x-api-key: YOUR_KEY" \
-  "https://api.01resolved.com/api/v1/proposal/FG93Keo.../pass-edge"
+  "https://api.01resolved.com/v1/proposal/FG93Keo.../pass-edge"
 ```
 
 <Accordion title="Example Response">
@@ -127,7 +127,7 @@ curl -H "x-api-key: YOUR_KEY" \
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/market-overview
+## GET /v1/proposal/{publicKey}/market-overview
 
 Returns live market statistics for a proposal.
 
@@ -138,7 +138,7 @@ Returns live market statistics for a proposal.
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/orders
+## GET /v1/proposal/{publicKey}/orders
 
 Returns all individual trades on a proposal's decision market.
 
@@ -156,13 +156,13 @@ Returns all individual trades on a proposal's decision market.
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/orders/csv
+## GET /v1/proposal/{publicKey}/orders/csv
 
 Downloads all orders as a CSV file.
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/price-chart
+## GET /v1/proposal/{publicKey}/price-chart
 
 Returns 15-minute interval price history for pass and fail markets, including TWAP values.
 
@@ -172,7 +172,7 @@ Returns 15-minute interval price history for pass and fail markets, including TW
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/flow-chart
+## GET /v1/proposal/{publicKey}/flow-chart
 
 Returns time-series net pass-aligned volume tilt over time.
 
@@ -185,7 +185,7 @@ Returns time-series net pass-aligned volume tilt over time.
 
 ---
 
-## GET /api/v1/proposal/{publicKey}/threshold-chart
+## GET /v1/proposal/{publicKey}/threshold-chart
 
 Returns time-series pass edge relative to the approval threshold. **The clearest chart for whether a proposal is passing.**
 
@@ -198,7 +198,7 @@ Returns time-series pass edge relative to the approval threshold. **The clearest
 
 ---
 
-## GET /api/v1/proposal/analytics/{publicKey}/outcome-strength
+## GET /v1/proposal/analytics/{publicKey}/outcome-strength
 
 Returns a detailed breakdown of pass vs fail conviction by trader count and capital.
 
@@ -233,7 +233,7 @@ Returns a detailed breakdown of pass vs fail conviction by trader count and capi
 
 ---
 
-## GET /api/v1/proposal/analytics/{publicKey}/trade-overview
+## GET /v1/proposal/analytics/{publicKey}/trade-overview
 
 Returns summary statistics about trading behavior.
 
@@ -241,7 +241,7 @@ Returns summary statistics about trading behavior.
 
 ---
 
-## GET /api/v1/proposal/analytics/{publicKey}/conviction-chart
+## GET /v1/proposal/analytics/{publicKey}/conviction-chart
 
 Returns hourly net pass-aligned capital over time.
 
@@ -253,7 +253,7 @@ Returns hourly net pass-aligned capital over time.
 
 ---
 
-## GET /api/v1/proposal/analytics/{publicKey}/trade-frequency-chart
+## GET /v1/proposal/analytics/{publicKey}/trade-frequency-chart
 
 Returns the distribution of traders by number of trades placed.
 
@@ -261,7 +261,7 @@ Returns the distribution of traders by number of trades placed.
 
 ---
 
-## GET /api/v1/proposal/analytics/proposal-comparables
+## GET /v1/proposal/analytics/proposal-comparables
 
 Returns similar resolved proposals for benchmarking.
 
